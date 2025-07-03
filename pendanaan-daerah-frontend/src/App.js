@@ -7,6 +7,7 @@ import PemdaDashboard from "./pages/PemdaDashboard";
 import ValidatorKPKDashboard from "./pages/ValidatorKPKDashboard";
 import ValidatorBPKPDashboard from "./pages/ValidatorBPKPDashboard";
 import MasyarakatDashboard from "./pages/MasyarakatDashboard";
+import BlockchainPage from "./pages/BlockChainPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/pemda/dashboard" element={<PemdaDashboard />} />
           <Route path="/validator/kpk" element={<ValidatorKPKDashboard />} />
           <Route path="/validator/bpkp" element={<ValidatorBPKPDashboard />} />
+          <Route path="/blockchain" element={<BlockchainPage />} />
 
         </Routes>
       </Router>

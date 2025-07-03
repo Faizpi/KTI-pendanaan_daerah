@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import API from "../services/api";
+import API_AUTH from "../services/apiAutch";
+
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -17,7 +18,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await API.post("/login", form);
+      const res = await API_AUTH.post("/login", form);
       const { user, token } = res.data;
 
       login({ ...user, token });

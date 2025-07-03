@@ -1,3 +1,4 @@
+// src/components/Navbar.jsx
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -7,21 +8,35 @@ export default function Navbar() {
 
   const handleLogout = () => {
     logout();
-    navigate("/"); // Kembali ke halaman masyarakat
+    navigate("/");
   };
 
   return (
-    <nav className="bg-blue-900 text-white p-4 flex justify-between items-center">
-      <Link to="/" className="font-bold text-lg">Pendanaan Daerah</Link>
-      <div>
+    <nav className="bg-white border-b border-gray-200 shadow-sm px-6 py-3 flex justify-between items-center">
+      <Link to="/" className="text-xl font-semibold text-blue-900">
+        Pendanaan Daerah
+      </Link>
+      <Link to="/blockchain" className="ml-4 hover:underline">
+        Lihat Blockchain
+      </Link>
+      <div className="flex items-center gap-4">
         {!user ? (
-          <Link to="/login" className="bg-white text-blue-800 px-4 py-1 rounded">
+          <Link
+            to="/login"
+            className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+          >
             Login
           </Link>
         ) : (
           <>
-            <span className="mr-4">👤 {user.name} ({user.role})</span>
-            <button onClick={handleLogout} className="bg-red-500 px-4 py-1 rounded">
+            <div className="text-sm text-gray-700">
+              {user.name}{" "}
+              <span className="text-gray-500 italic">({user.role})</span>
+            </div>
+            <button
+              onClick={handleLogout}
+              className="text-sm bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition"
+            >
               Logout
             </button>
           </>

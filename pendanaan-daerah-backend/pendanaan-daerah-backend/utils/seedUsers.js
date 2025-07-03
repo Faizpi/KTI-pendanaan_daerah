@@ -10,18 +10,23 @@ const seedUsers = async () => {
       password: await bcrypt.hash('pemda123', 10),
       role: 'pemda'
     },
+
     {
-      name: 'Validator KPK',
-      email: 'kpk@validator.go.id',
-      password: await bcrypt.hash('kpk123', 10),
-      role: 'validator-kpk'
+      name: "Validator KPK",
+      email: "kpk@validator.go.id",
+      password: await bcrypt.hash("kpk123", 10),
+      role: "validator-kpk",
+      instansi: "KPK",          // <-- TAMBAHKAN
     },
+    
     {
-      name: 'Validator BPKP',
-      email: 'bpkp@validator.go.id',
-      password: await bcrypt.hash('bpkp123', 10),
-      role: 'validator-bpkp'
-    }
+      name: "Validator BPKP",
+      email: "bpkp@validator.go.id",
+      password: await bcrypt.hash("bpkp123", 10),
+      role: "validator-bpkp",
+      instansi: "BPKP",         // <-- TAMBAHKAN
+    },
+
   ];
 
   for (const user of users) {
@@ -29,7 +34,7 @@ const seedUsers = async () => {
     if (!exist) await User.create(user);
   }
 
-  console.log('✅ Akun default sudah siap');
+  console.log('✅ Akun default berhasil dibuat (jika belum ada)');
 };
 
 module.exports = seedUsers;

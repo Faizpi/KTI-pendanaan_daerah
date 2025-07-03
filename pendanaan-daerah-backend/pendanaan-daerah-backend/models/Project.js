@@ -1,20 +1,24 @@
+// models/Project.js
 const mongoose = require("mongoose");
 
-const TahapSchema = new mongoose.Schema({
+const tahapSchema = new mongoose.Schema({
   tahapKe: Number,
   dokumenUrl: String,
-  status: { type: String, default: "menunggu" },
+  status: String,
   validasi: {
     KPK: { type: String, default: "menunggu" },
-    BPKP: { type: String, default: "menunggu" }
-  }
+    BPKP: { type: String, default: "menunggu" },
+  },
 });
 
-const ProjectSchema = new mongoose.Schema({
+const projectSchema = new mongoose.Schema({
   namaProyek: String,
+  deskripsi: String,
+  anggaran: Number,
+  dokumen: String,
   pemda: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  tahapan: [TahapSchema]
+  tahapan: [tahapSchema],
+  statusGlobal: String
 });
 
-module.exports = mongoose.model("Project", ProjectSchema);
-
+module.exports = mongoose.model("Project", projectSchema);
